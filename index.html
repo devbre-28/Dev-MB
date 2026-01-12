@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Grade 12 students" />
+    <meta
+      name="keywords"
+      content="codemastery, code, programming, learn codding"
+    />
+    <meta
+      name="description"
+      content="This is the best website to learn programming with the world's professional teachers."
+    />
+    <title>CodeMastery | The Ultimate Learning Hub</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="website icon"
+      href="https://github.com/devbre-28/Dev-MB/blob/main/Logo.png?raw=true"
+    />
+    <style>
+      :root {
+        --accent: #00d2ff;
+        --glass: rgba(10, 10, 15, 0.85);
+        --light: #ffffff;
+      }
+
+      body {
+        font-family: "Source Sans Pro", sans-serif;
+        margin: 0;
+        background-color: #020205;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      #parallax-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://github.com/devbre-28/Dev-MB/blob/main/Background.jpeg?raw=true");
+        background-size: cover;
+        background-position: center;
+        z-index: -2;
+        transition: transform 0.1s ease-out;
+      }
+
+      .main-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #hero-card {
+        margin-top: 20vh;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 5rem 2rem;
+        width: 90%;
+        max-width: 600px;
+        backdrop-filter: blur(20px);
+        background: var(--glass);
+        z-index: 10;
+        animation: slideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-weight: 900;
+        letter-spacing: 12px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+
+      .nav-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 3rem;
+      }
+
+      .btn-inverse {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 15px 5px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: 0.3s all ease;
+        cursor: pointer;
+      }
+
+      .btn-inverse:hover {
+        background: white;
+        color: black;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+      }
+
+      .overlay-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(2, 2, 5, 0.98);
+        z-index: 100;
+        display: none;
+        overflow-y: auto;
+        padding: 8vh 0;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .panel-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .close-trigger {
+        position: fixed;
+        top: 30px;
+        right: 40px;
+        font-size: 2.5rem;
+        cursor: pointer;
+        z-index: 101;
+        color: #444;
+        transition: 0.3s;
+      }
+
+      .close-trigger:hover {
+        color: white;
+        transform: rotate(180deg);
+      }
+
+      .teacher-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
+      }
+
+      .teacher-box:hover {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .teacher-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent);
+        margin-bottom: 15px;
+      }
+
+      .content-section {
+        width: 100%;
+        max-width: 1100px;
+        padding: 100px 20px;
+      }
+
+      .resource-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        text-align: center;
+        height: 100%;
+        transition: 0.4s;
+      }
+
+      .resource-card:hover {
+        transform: scale(1.05);
+        background: white;
+        color: black;
+      }
+
+      footer {
+        background: #050508;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 80px 0 30px;
+        width: 100%;
+      }
+
+      .footer-link {
+        color: #888;
+        text-decoration: none;
+        transition: 0.3s;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .footer-link:hover {
+        color: var(--accent);
+        padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parallax-bg"></div>
+
+    <div class="main-wrapper">
+      <div id="hero-card">
+        <div class="mb-4"><i class="fas fa-cube fa-3x text-info"></i></div>
+        <h1>CodeMastery</h1>
+        <p class="opacity-50" style="letter-spacing: 5px">
+          THE PLATFORM FOR DEVELOPERS
+        </p>
+
+        <div class="nav-grid">
+          <button class="btn-inverse" onclick="openPage('about-panel')">
+            Team
+          </button>
+          <button class="btn-inverse" onclick="openPage('course-panel')">
+            Courses
+          </button>
+          <button class="btn-inverse" onclick="openPage('contact-panel')">
+            Enroll
+          </button>
+        </div>
+      </div>
+
+      <div class="content-section" data-aos="fade-up">
+        <h2 class="text-center mb-5 display-6 fw-bold">OUR ECOSYSTEM</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="resource-card">
+              <i class="fas fa-terminal h1 mb-4"></i>
+              <h4>CLI Tools</h4>
+              <p class="small">
+                Proprietary terminal tools designed to speed up your local
+                development environment by 40%.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="resource-card">
+              <i class="fas fa-project-diagram h1 mb-4"></i>
+              <h4>Architecture</h4>
+              <p class="small">
+                We teach system design, scalability, and clean architecture
+                principles.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="resource-card">
+              <i class="fas fa-cloud-upload-alt h1 mb-4"></i>
+              <h4>CI/CD</h4>
+              <p class="small">
+                Learn how to automate your workflow from first commit to
+                production deployment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section" data-aos="zoom-in">
+        <div class="p-5 border border-secondary text-center bg-dark">
+          <i class="fas fa-quote-left h1 text-info mb-4"></i>
+          <h3 class="fst-italic">
+            "The quality of instructors here is unmatched. It's like having the
+            world's best YouTube teachers in one private classroom."
+          </h3>
+          <p class="mt-4 fw-bold">— CodeMastery, Senior Frontend Developers</p>
+        </div>
+      </div>
+
+      <footer>
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+              <h4 class="fw-bold mb-4">CodeMastery</h4>
+              <p class="text-secondary">
+                Providing elite-level software engineering education since 2018.
+                Join the 1% of developers who truly master their craft.
+              </p>
+            </div>
+            <div class="col-md-2 mb-4">
+              <h6 class="text-uppercase mb-4 fw-bold">Paths</h6>
+              <a href="#" class="footer-link">Frontend</a>
+              <a href="#" class="footer-link">Backend</a>
+              <a href="#" class="footer-link">DevOps</a>
+            </div>
+            <div class="col-md-2 mb-4">
+              <h6 class="text-uppercase mb-4 fw-bold">Support</h6>
+              <a href="#" class="footer-link">FAQ</a>
+              <a href="#" class="footer-link">Discord</a>
+            </div>
+            <div class="col-md-4">
+              <h6 class="text-uppercase mb-4 fw-bold">Newsletter</h6>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bg-transparent text-white border-secondary"
+                  placeholder="Email"
+                />
+                <button class="btn btn-info">Join</button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-center pt-4 border-top border-secondary opacity-50 small"
+          >
+            &copy; 2025 CodeMastery Hub. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="about-panel" class="overlay-panel">
+      <i class="fas fa-times close-trigger" onclick="closeAll()"></i>
+      <div class="panel-container">
+        <h1 class="display-3 mb-5 border-bottom pb-4">The Dream Team</h1>
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-right">
+            <div class="teacher-box d-flex align-items-start gap-4">
+              <img
+                src="https://github.com/devbre-28/Dev-MB/blob/main/Mosh%20Hamedani.jpeg?raw=true"
+                class="teacher-img"
+              />
+              <div>
+                <h4 class="text-info">Mosh Hamedani</h4>
+                <p class="small text-secondary">Master of Simplicity</p>
+                <p>
+                  Specializes in .NET and Python. Known for making complex
+                  topics incredibly easy to understand.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <div class="teacher-box d-flex align-items-start gap-4">
+              <img
+                src="https://github.com/devbre-28/Dev-MB/blob/main/Net%20Ninja.png?raw=true"
+                class="teacher-img"
+              />
+              <div>
+                <h4 class="text-info">Shaun (Net Ninja)</h4>
+                <p class="small text-secondary">Modern Web Expert</p>
+                <p>
+                  A legend in the Javascript ecosystem. Expert in React, Vue,
+                  and Firebase.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <div class="teacher-box d-flex align-items-start gap-4">
+              <img
+                src="https://github.com/devbre-28/Dev-MB/blob/main/Quincy%20Larson.jpeg?raw=true"
+                class="teacher-img"
+              />
+              <div>
+                <h4 class="text-info">Quincy Larson</h4>
+                <p class="small text-secondary">Community & Open Source</p>
+                <p>
+                  Founder of FreeCodeCamp. Focuses on the career path and
+                  large-scale systems logic.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <div class="teacher-box d-flex align-items-start gap-4">
+              <img
+                src="https://github.com/devbre-28/Dev-MB/blob/main/Kyle.jpeg?raw=true"
+                class="teacher-img"
+              />
+              <div>
+                <h4 class="text-info">Kyle (Web Dev Simplified)</h4>
+                <p class="small text-secondary">Clean Code Specialist</p>
+                <p>
+                  Specializes in CSS and JS logic. His mission is to teach you
+                  how to think like a developer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="course-panel" class="overlay-panel">
+      <i class="fas fa-times close-trigger" onclick="closeAll()"></i>
+      <div class="panel-container">
+        <h1 class="display-3 mb-5 border-bottom pb-4">Mastery Curriculum</h1>
+        <div class="row g-5">
+          <div class="col-12" data-aos="fade-up">
+            <div class="p-4 border border-info bg-dark">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h2 class="mb-0">01. Frontend Engineering</h2>
+                <span class="badge bg-info text-dark">12 WEEKS</span>
+              </div>
+              <p class="lead">
+                Deep dive into React, TypeScript, and state management.
+              </p>
+              <div class="row mt-4">
+                <div class="col-md-4">
+                  <h6 class="text-info text-uppercase">Phase 1</h6>
+                  <ul class="small opacity-75">
+                    <li>Advanced CSS & SCSS</li>
+                    <li>Modern JS (ES6+)</li>
+                    <li>DOM Manipulation</li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="text-info text-uppercase">Phase 2</h6>
+                  <ul class="small opacity-75">
+                    <li>React Hooks & Context</li>
+                    <li>TypeScript Integration</li>
+                    <li>State Management</li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="text-info text-uppercase">Phase 3</h6>
+                  <ul class="small opacity-75">
+                    <li>Next.js & SSR</li>
+                    <li>Performance Profiling</li>
+                    <li>Unit Testing</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" data-aos="fade-up">
+            <div class="p-4 border border-secondary bg-dark">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h2 class="mb-0">02. Backend Infrastructure</h2>
+                <span class="badge bg-secondary">16 WEEKS</span>
+              </div>
+              <p class="lead">
+                Master robust API design and handling data at scale.
+              </p>
+              <div class="row mt-4">
+                <div class="col-md-4">
+                  <h6 class="text-secondary text-uppercase">Phase 1</h6>
+                  <ul class="small opacity-75">
+                    <li>Node.js Architecture</li>
+                    <li>RESTful API Design</li>
+                    <li>PostgreSQL & NoSQL</li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="text-secondary text-uppercase">Phase 2</h6>
+                  <ul class="small opacity-75">
+                    <li>Authentication (JWT)</li>
+                    <li>Redis Caching</li>
+                    <li>Microservices Setup</li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="text-secondary text-uppercase">Phase 3</h6>
+                  <ul class="small opacity-75">
+                    <li>Docker & Containers</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>Cloud Deployment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" data-aos="fade-up">
+            <div class="mt-5 p-5 bg-dark border-start border-light">
+              <h3 class="mb-4">Our Teaching Philosophy</h3>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <h5>
+                    <i class="fas fa-project-diagram text-info me-2"></i>
+                    Project-First Learning
+                  </h5>
+                  <p class="small opacity-75">
+                    Build real-world systems like E-commerce engines and
+                    real-time chat platforms.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <h5>
+                    <i class="fas fa-users text-info me-2"></i> Code Reviews
+                  </h5>
+                  <p class="small opacity-75">
+                    Every week, your code is reviewed by industry seniors to
+                    ensure professional standards.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact-panel" class="overlay-panel">
+      <i class="fas fa-times close-trigger" onclick="closeAll()"></i>
+      <div class="panel-container">
+        <h1 class="display-3 mb-5">Join the Elite</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="lead text-info">Application Process</p>
+            <p>
+              We accept 50 students per quarter. Review and interview processes
+              apply.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <form>
+              <input
+                type="text"
+                class="form-control bg-transparent text-white border-secondary mb-3 p-3"
+                placeholder="Full Name"
+              />
+              <input
+                type="email"
+                class="form-control bg-transparent text-white border-secondary mb-3 p-3"
+                placeholder="Email"
+              />
+              <textarea
+                class="form-control bg-transparent text-white border-secondary mb-3 p-3"
+                rows="5"
+                placeholder="Your coding goals..."
+              ></textarea>
+              <button type="button" class="btn btn-info w-100 p-3 fw-bold">
+                SUBMIT APPLICATION
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: false });
+
+      window.addEventListener("scroll", function () {
+        let value = window.scrollY;
+        document.getElementById("parallax-bg").style.transform =
+          "translateY(" + value * 0.3 + "px)";
+      });
+
+      function openPage(id) {
+        let p = document.getElementById(id);
+        p.style.display = "block";
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
+          p.style.opacity = "1";
+        }, 10);
+      }
+
+      function closeAll() {
+        let panels = document.querySelectorAll(".overlay-panel");
+        panels.forEach((p) => {
+          p.style.opacity = "0";
+          setTimeout(() => {
+            p.style.display = "none";
+          }, 400);
+        });
+        document.body.style.overflow = "auto";
+      }
+    </script>
+  </body>
+</html>
